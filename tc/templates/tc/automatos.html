@@ -1,0 +1,31 @@
+{% extends 'tc/base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'tc/base.css' %}">
+{% block main %}
+<div class="myDiv">
+        <h2>Autómatos Finitos Determinísticos (AFD)</h2>
+        <br>
+        <a href="{% url 'tc:automatosform' %}" class="btn btn-success" >Crie um AFD</a>
+        <br><br>
+        <h7>Apresentam-se em baixo os autómatos que foram criados </h7>
+    <br><br>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="myDiv2">
+        <h2>Descrição</h2>
+            <br>
+        {% for automato in automatos %}
+            <p>{{ automato.descricao }}</p>
+            <nav>
+                <a href="{% url 'tc:automatoseditar' automato.id %}" class="btn btn-info">Detalhes</a>
+                <a href="{% url 'tc:automatosseq' automato.id %}" class="btn btn-success">Validar Sequencia</a>
+                <a href="{% url 'tc:automatoseditar' automato.id %}" class="btn btn-warning">Editar AFD</a>
+                <a href="{% url 'tc:automatosapagar' automato.id %}" class="btn btn-danger">Apagar AFD</a>
+                <br><br>
+            </nav>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

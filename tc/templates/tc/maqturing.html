@@ -1,0 +1,31 @@
+{% extends 'tc/base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'tc/base.css' %}">
+{% block main %}
+<div class="myDiv">
+        <h2>Máquinas de Turing</h2>
+        <br>
+        <a href="{% url 'tc:maquinasform' %}" class="btn btn-success" >Crie uma Máquina de Turing</a>
+        <br><br>
+        <h7>Apresentam-se em baixo as Máquinas que foram criadas </h7>
+    <br><br>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="myDiv2">
+        <h2>Descrição</h2>
+            <br>
+        {% for maquina in maquinas %}
+            <p>{{ maquina.descricao }}</p>
+            <nav>
+                <a href="{% url 'tc:maquinaseditar' maquina.id %}" class="btn btn-info">Detalhes</a>
+                <a href="{% url 'tc:maquinasseq' maquina.id %}" class="btn btn-success">Validar Sequencia</a>
+                <a href="{% url 'tc:maquinaseditar' maquina.id %}" class="btn btn-warning">Editar Maquina</a>
+                <a href="{% url 'tc:maquinasapagar' maquina.id %}" class="btn btn-danger">Apagar Maquina</a>
+                <br><br>
+            </nav>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}%}

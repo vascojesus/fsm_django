@@ -1,0 +1,15 @@
+{% extends 'tc/base.html' %}
+
+{% block main %}
+    <h3>Novo Autómato</h3>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+        <a href="{% url 'tc:automatos' %}" role="button" class="btn btn-warning">Cancelar</a>
+        <input type="submit" value="Gravar" class="btn btn-success">
+    </form>
+
+
+{% endblock %}
